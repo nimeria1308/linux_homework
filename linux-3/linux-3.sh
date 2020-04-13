@@ -47,9 +47,13 @@ touch ab.321    # yes
 touch ab3.21    # no
 touch ab_321    # no
 
-# Premahvame potrebitela Ivan i grupata mu (ako ima takiva)
-sudo userdel Ivan
-sudo groupdel Ivan
+function cleanup {
+    # Premahvame potrebitela Ivan i grupata mu (ako ima takiva)
+    sudo userdel Ivan
+    sudo groupdel Ivan
+}
+
+cleanup
 
 # Prigotvqme promenliva za imeto na output file-a
 HW_OUTPUT="linux-3-output.txt"
@@ -217,3 +221,5 @@ ps -e --sort=comm |& tee -a ${HW_OUTPUT}
 # 17. Prebroyte protsesite
 echo "Zadacha 17." |& tee -a ${HW_OUTPUT}
 ps -e -o pid= | wc -l |& tee -a ${HW_OUTPUT}
+
+cleanup
